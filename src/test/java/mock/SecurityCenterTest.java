@@ -1,6 +1,7 @@
 package mock;
 
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,13 @@ public class SecurityCenterTest {
     }
 
     @Test
-    public void shouldVerifyDoorIsClosed() {
+    public void shouldVerifyDoorIsClosed(){
+        // given
+        MockDoorPanel mockDoorPanel = new MockDoorPanel();
+        SecurityCenter securityCenter = new SecurityCenter(mockDoorPanel);
+        //when
+        securityCenter.switchOn();
+        //then
+        Assertions.assertTrue(mockDoorPanel.isFlag());
     }
 }
